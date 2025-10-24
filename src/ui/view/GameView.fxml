@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+          fx:controller="ui.controller.GameViewController"
+          prefHeight="800.0" prefWidth="1200.0"
+          style="-fx-background-color: #f0f0f0;">
+    
+    <!-- Top section: Game info -->
+    <top>
+        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+            <HBox spacing="20" alignment="CENTER">
+                <Label text="Current Player: " style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                <Label fx:id="currentPlayerLabel" style="-fx-font-size: 16;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="Next Player: " style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                <Label fx:id="nextPlayerLabel" style="-fx-font-size: 16;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Fire Pit" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                    <Label fx:id="firePitTopCard" style="-fx-padding: 5; -fx-background-color: white; -fx-border-color: black;"/>
+                </VBox>
+            </HBox>
+            <Label fx:id="statusLabel" style="-fx-font-size: 14;" wrapText="true"/>
+        </VBox>
+    </top>
+
+    <!-- Center section: Game board and cards -->
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <StackPane style="-fx-padding: 20;">
+                <GridPane fx:id="gameBoard" alignment="CENTER" hgap="2" vgap="2" 
+                         style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;">
+                    <!-- Board cells will be added programmatically -->
+                </GridPane>
+            </StackPane>
+            
+            <!-- Player's cards section -->
+            <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 5;">
+                <Label text="Your Cards:" style="-fx-font-weight: bold; -fx-font-size: 16; -fx-padding: 0 0 5 10;"/>
+                <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-padding: 0 10 10 10;">
+                    <HBox fx:id="playerCardsArea" spacing="10" alignment="CENTER"/>
+                </ScrollPane>
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- Left section: Player info -->
+    <left>
+        <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: white; -fx-border-color: #cccccc;">
+            <Label text="Players" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+            <VBox fx:id="playerInfoArea" spacing="15"/>
+            <fx:define>
+                <ToggleGroup fx:id="cardGroup"/>
+            </fx:define>
+        </VBox>
+    </left>
+
+    <!-- Right section: Controls -->
+    <right>
+        <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: white; -fx-border-color: #cccccc;">
+            <Label text="Game Controls" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+            <Button text="Field Marble" onAction="#handleFieldMarble" 
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            <Button text="Play Selected" onAction="#handlePlaySelected"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+            <Button text="Deselect All" onAction="#handleDeselectAll"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            <Separator/>
+            <Label text="Split Distance (Seven):" style="-fx-font-weight: bold;"/>
+            <Spinner fx:id="splitDistanceSpinner" min="1" max="6" initialValue="3"
+                     style="-fx-pref-width: 100;"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Text fx:id="helpText" text="Press SPACE to field marble" 
+                  style="-fx-font-style: italic;"/>
+        </VBox>
+    </right>
+</BorderPane> 
