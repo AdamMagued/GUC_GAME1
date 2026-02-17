@@ -91,5 +91,5 @@ java -cp bin:junit-platform-console-standalone.jar org.junit.runner.JUnitCore te
 * **Cards.csv**: Defines the deck composition. You can modify this file to adjust the frequency, rank, and suit of cards available in the game.
 
 
-##License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
